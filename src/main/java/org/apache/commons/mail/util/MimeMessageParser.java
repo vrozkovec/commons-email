@@ -78,8 +78,8 @@ public class MimeMessageParser
      */
     public MimeMessageParser(final MimeMessage message)
     {
-        attachmentList = new ArrayList<DataSource>();
-        cidMap = new HashMap<String, DataSource>();
+        attachmentList = new ArrayList<>();
+        cidMap = new HashMap<>();
         this.mimeMessage = message;
         this.isMultiPart = false;
     }
@@ -337,7 +337,7 @@ public class MimeMessageParser
     /** @return true if attachments are available */
     public boolean hasAttachments()
     {
-        return this.attachmentList.size() > 0;
+        return !this.attachmentList.isEmpty();
     }
 
     /**
@@ -350,9 +350,8 @@ public class MimeMessageParser
     {
         DataSource dataSource;
 
-        for (int i = 0; i < getAttachmentList().size(); i++)
-        {
-            dataSource = getAttachmentList().get(i);
+        for (final DataSource element : getAttachmentList()) {
+            dataSource = element;
             if (name.equalsIgnoreCase(dataSource.getName()))
             {
                 return dataSource;
@@ -392,12 +391,12 @@ public class MimeMessageParser
     {
         String result = dataSource.getName();
 
-        if (result == null || result.length() == 0)
+        if (result == null || result.isEmpty())
         {
             result = part.getFileName();
         }
 
-        if (result != null && result.length() > 0)
+        if (result != null && !result.isEmpty())
         {
             result = MimeUtility.decodeText(result);
         }

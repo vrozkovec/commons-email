@@ -470,8 +470,9 @@ public class MultiPartEmail extends Email
 
             getContainer().addBodyPart(bodyPart);
         }
-        catch (final MessagingException me)
+        catch (final UnsupportedEncodingException | MessagingException me)
         {
+            // in case the file name could not be encoded
             throw new EmailException(me);
         }
         setBoolHasAttachments(true);

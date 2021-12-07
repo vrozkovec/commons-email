@@ -296,10 +296,9 @@ public class HtmlEmailTest extends AbstractEmailTest
     public void testSend() throws EmailException, IOException
     {
         final EmailAttachment attachment = new EmailAttachment();
-        File testFile = null;
 
         /** File to used to test file attachments (Must be valid) */
-        testFile = File.createTempFile("commons-email-testfile", ".txt");
+        final File testFile = File.createTempFile("commons-email-testfile", ".txt");
         testFile.deleteOnExit();
 
         // ====================================================================
@@ -599,7 +598,7 @@ public class HtmlEmailTest extends AbstractEmailTest
             this.email.getCcAddresses(),
             this.email.getBccAddresses(),
             false);
-        
+
         // make sure that no double dots show up
         assertTrue(this.email.getHtmlMsg().contains("3DTZC268X93337.zip"));
         assertFalse(this.email.getHtmlMsg().contains("3DTZC268X93337..zip"));

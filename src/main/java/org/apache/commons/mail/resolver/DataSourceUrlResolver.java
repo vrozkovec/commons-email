@@ -23,7 +23,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * Creates a <code>DataSource</code> based on an URL.
+ * Creates a {@code DataSource} based on an URL.
  *
  * @since 1.3
  */
@@ -39,7 +39,6 @@ public class DataSourceUrlResolver extends DataSourceBaseResolver
      */
     public DataSourceUrlResolver(final URL baseUrl)
     {
-        super();
         this.baseUrl = baseUrl;
     }
 
@@ -117,7 +116,7 @@ public class DataSourceUrlResolver extends DataSourceBaseResolver
         }
 
         // if we get an non-existing location what we shall do?
-        if (resourceLocation == null || resourceLocation.length() == 0)
+        if (resourceLocation == null || resourceLocation.isEmpty())
         {
             throw new IllegalArgumentException("No resource defined");
         }
@@ -128,6 +127,6 @@ public class DataSourceUrlResolver extends DataSourceBaseResolver
             return new URL(resourceLocation);
         }
 
-        return new URL(getBaseUrl(), resourceLocation.replaceAll("&amp;", "&"));
+        return new URL(getBaseUrl(), resourceLocation.replace("&amp;", "&"));
     }
 }

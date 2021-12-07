@@ -198,7 +198,7 @@ public abstract class Email
     protected Date sentDate;
 
     /**
-     * Instance of an <code>Authenticator</code> object that will be used
+     * Instance of an {@code Authenticator} object that will be used
      * when authentication is requested from the mail server.
      */
     protected Authenticator authenticator;
@@ -222,22 +222,22 @@ public abstract class Email
     protected String sslSmtpPort = "465";
 
     /** List of "to" email addresses. */
-    protected List<InternetAddress> toList = new ArrayList<InternetAddress>();
+    protected List<InternetAddress> toList = new ArrayList<>();
 
     /** List of "cc" email addresses. */
-    protected List<InternetAddress> ccList = new ArrayList<InternetAddress>();
+    protected List<InternetAddress> ccList = new ArrayList<>();
 
     /** List of "bcc" email addresses. */
-    protected List<InternetAddress> bccList = new ArrayList<InternetAddress>();
+    protected List<InternetAddress> bccList = new ArrayList<>();
 
     /** List of "replyTo" email addresses. */
-    protected List<InternetAddress> replyList = new ArrayList<InternetAddress>();
+    protected List<InternetAddress> replyList = new ArrayList<>();
 
     /**
      * Address to which undeliverable mail should be sent.
      * Because this is handled by JavaMail as a String property
-     * in the mail session, this property is of type <code>String</code>
-     * rather than <code>InternetAddress</code>.
+     * in the mail session, this property is of type {@code String}
+     * rather than {@code InternetAddress}.
      */
     protected String bounceAddress;
 
@@ -248,7 +248,7 @@ public abstract class Email
      * or  2( high ) 3( normal ) 4( low ) and 5( lowest )
      * Disposition-Notification-To: user@domain.net
      */
-    protected Map<String, String> headers = new HashMap<String, String>();
+    protected Map<String, String> headers = new HashMap<>();
 
     /**
      * Used to determine whether to use pop3 before smtp, and if so the settings.
@@ -341,7 +341,7 @@ public abstract class Email
      * method is not used, no authentication will be performed.
      * <p>
      * This method will create a new instance of
-     * <code>DefaultAuthenticator</code> using the supplied parameters.
+     * {@code DefaultAuthenticator} using the supplied parameters.
      *
      * @param userName User name for the SMTP server
      * @param password password for the SMTP server
@@ -355,13 +355,13 @@ public abstract class Email
     }
 
     /**
-     * Sets the <code>Authenticator</code> to be used when authentication
+     * Sets the {@code Authenticator} to be used when authentication
      * is requested from the mail server.
      * <p>
      * This method should be used when your outgoing mail server requires
      * authentication.  Your mail server must also support RFC2554.
      *
-     * @param newAuthenticator the <code>Authenticator</code> object.
+     * @param newAuthenticator the {@code Authenticator} object.
      * @see Authenticator
      * @since 1.0
      */
@@ -849,10 +849,10 @@ public abstract class Email
 
     /**
      * Set a list of "TO" addresses. All elements in the specified
-     * <code>Collection</code> are expected to be of type
-     * <code>java.mail.internet.InternetAddress</code>.
+     * {@code Collection} are expected to be of type
+     * {@code java.mail.internet.InternetAddress}.
      *
-     * @param  aCollection collection of <code>InternetAddress</code> objects.
+     * @param  aCollection collection of {@code InternetAddress} objects.
      * @return An Email.
      * @throws EmailException Indicates an invalid email address.
      * @see javax.mail.internet.InternetAddress
@@ -865,7 +865,7 @@ public abstract class Email
             throw new EmailException("Address List provided was invalid");
         }
 
-        this.toList = new ArrayList<InternetAddress>(aCollection);
+        this.toList = new ArrayList<>(aCollection);
         return this;
     }
 
@@ -958,10 +958,10 @@ public abstract class Email
 
     /**
      * Set a list of "CC" addresses. All elements in the specified
-     * <code>Collection</code> are expected to be of type
-     * <code>java.mail.internet.InternetAddress</code>.
+     * {@code Collection} are expected to be of type
+     * {@code java.mail.internet.InternetAddress}.
      *
-     * @param aCollection collection of <code>InternetAddress</code> objects.
+     * @param aCollection collection of {@code InternetAddress} objects.
      * @return An Email.
      * @throws EmailException Indicates an invalid email address.
      * @see javax.mail.internet.InternetAddress
@@ -974,7 +974,7 @@ public abstract class Email
             throw new EmailException("Address List provided was invalid");
         }
 
-        this.ccList = new ArrayList<InternetAddress>(aCollection);
+        this.ccList = new ArrayList<>(aCollection);
         return this;
     }
 
@@ -1067,10 +1067,10 @@ public abstract class Email
 
     /**
      * Set a list of "BCC" addresses. All elements in the specified
-     * <code>Collection</code> are expected to be of type
-     * <code>java.mail.internet.InternetAddress</code>.
+     * {@code Collection} are expected to be of type
+     * {@code java.mail.internet.InternetAddress}.
      *
-     * @param  aCollection collection of <code>InternetAddress</code> objects
+     * @param  aCollection collection of {@code InternetAddress} objects
      * @return An Email.
      * @throws EmailException Indicates an invalid email address
      * @see javax.mail.internet.InternetAddress
@@ -1083,7 +1083,7 @@ public abstract class Email
             throw new EmailException("Address List provided was invalid");
         }
 
-        this.bccList = new ArrayList<InternetAddress>(aCollection);
+        this.bccList = new ArrayList<>(aCollection);
         return this;
     }
 
@@ -1146,10 +1146,10 @@ public abstract class Email
 
     /**
      * Set a list of reply to addresses. All elements in the specified
-     * <code>Collection</code> are expected to be of type
-     * <code>java.mail.internet.InternetAddress</code>.
+     * {@code Collection} are expected to be of type
+     * {@code java.mail.internet.InternetAddress}.
      *
-     * @param   aCollection collection of <code>InternetAddress</code> objects
+     * @param   aCollection collection of {@code InternetAddress} objects
      * @return  An Email.
      * @throws EmailException Indicates an invalid email address
      * @see javax.mail.internet.InternetAddress
@@ -1162,7 +1162,7 @@ public abstract class Email
             throw new EmailException("Address List provided was invalid");
         }
 
-        this.replyList = new ArrayList<InternetAddress>(aCollection);
+        this.replyList = new ArrayList<>(aCollection);
         return this;
     }
 
@@ -1388,35 +1388,35 @@ public abstract class Email
                 throw new EmailException("At least one receiver address required");
             }
 
-            if (this.toList.size() > 0)
+            if (!this.toList.isEmpty())
             {
                 this.message.setRecipients(
                     Message.RecipientType.TO,
                     this.toInternetAddressArray(this.toList));
             }
 
-            if (this.ccList.size() > 0)
+            if (!this.ccList.isEmpty())
             {
                 this.message.setRecipients(
                     Message.RecipientType.CC,
                     this.toInternetAddressArray(this.ccList));
             }
 
-            if (this.bccList.size() > 0)
+            if (!this.bccList.isEmpty())
             {
                 this.message.setRecipients(
                     Message.RecipientType.BCC,
                     this.toInternetAddressArray(this.bccList));
             }
 
-            if (this.replyList.size() > 0)
+            if (!this.replyList.isEmpty())
             {
                 this.message.setReplyTo(
                     this.toInternetAddressArray(this.replyList));
             }
 
 
-            if (this.headers.size() > 0)
+            if (!this.headers.isEmpty())
             {
                 for (final Map.Entry<String, String> entry : this.headers.entrySet())
                 {
@@ -1558,7 +1558,7 @@ public abstract class Email
         {
             return this.session.getProperty(EmailConstants.MAIL_HOST);
         }
-        else if (EmailUtils.isNotEmpty(this.hostName))
+        if (EmailUtils.isNotEmpty(this.hostName))
         {
             return this.hostName;
         }
@@ -1576,7 +1576,7 @@ public abstract class Email
         {
             return this.session.getProperty(EmailConstants.MAIL_PORT);
         }
-        else if (EmailUtils.isNotEmpty(this.smtpPort))
+        if (EmailUtils.isNotEmpty(this.smtpPort))
         {
             return this.smtpPort;
         }
@@ -1746,7 +1746,7 @@ public abstract class Email
         {
             return this.session.getProperty(EmailConstants.MAIL_SMTP_SOCKET_FACTORY_PORT);
         }
-        else if (EmailUtils.isNotEmpty(this.sslSmtpPort))
+        if (EmailUtils.isNotEmpty(this.sslSmtpPort))
         {
             return this.sslSmtpPort;
         }
@@ -1969,11 +1969,7 @@ public abstract class Email
             // it will throw AddressException.
             address.validate();
         }
-        catch (final AddressException e)
-        {
-            throw new EmailException(e);
-        }
-        catch (final UnsupportedEncodingException e)
+        catch (final AddressException | UnsupportedEncodingException e)
         {
             throw new EmailException(e);
         }

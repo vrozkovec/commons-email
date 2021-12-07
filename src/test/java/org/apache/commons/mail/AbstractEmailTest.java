@@ -282,14 +282,14 @@ public abstract class AbstractEmailTest
                     toAdd.toString().contains(mimeMessage.getHeader("To", null)));
 
             //test cc address
-            if (ccAdd.size() > 0)
+            if (!ccAdd.isEmpty())
             {
                 assertTrue("got wrong Cc: address from mail",
                     ccAdd.toString().contains(mimeMessage.getHeader("Cc", null)));
             }
 
             //test bcc address
-            if (bccAdd.size() > 0)
+            if (!bccAdd.isEmpty())
             {
                 assertTrue("got wrong Bcc: address from mail",
                     bccAdd.toString().contains(mimeMessage.getHeader("Bcc", null)));
@@ -394,11 +394,11 @@ public abstract class AbstractEmailTest
     }
 
     /**
-     * Serializes the {@link MimeMessage} from the <code>WiserMessage</code>
+     * Serializes the {@link MimeMessage} from the {@code WiserMessage}
      * passed in. The headers are serialized first followed by the message
      * body.
      *
-     * @param wiserMessage The <code>WiserMessage</code> to serialize.
+     * @param wiserMessage The {@code WiserMessage} to serialize.
      * @return The string format of the message.
      * @throws MessagingException
      * @throws IOException
@@ -509,17 +509,17 @@ public abstract class AbstractEmailTest
 
     /**
      * Checks if an email server is running at the address stored in the
-     * <code>fakeMailServer</code>.
+     * {@code fakeMailServer}.
      *
      * @param fakeMailServer
      *            The server from which the address is picked up.
-     * @return <code>true</code> if the server claims to be running
+     * @return {@code true} if the server claims to be running
      * @since 1.1
      */
     protected boolean isMailServerStopped(final Wiser fakeMailServer) {
         return !fakeMailServer.getServer().isRunning();
     }
-    
+
     /**
      * Create a mocked URL object which always throws an IOException
      * when the openStream() method is called.
@@ -533,7 +533,7 @@ public abstract class AbstractEmailTest
         final URL url = createMock(URL.class);
         expect(url.openStream()).andThrow(new IOException());
         replay(url);
-        
+
         return url;
     }
 }

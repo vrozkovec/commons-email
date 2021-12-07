@@ -17,8 +17,10 @@
 
 package org.apache.commons.mail;
 
+import java.io.OutputStreamWriter;
 import java.io.PrintStream;
 import java.io.PrintWriter;
+import java.nio.charset.Charset;
 
 /**
  * Exception thrown when a checked error occurs in commons-email.
@@ -37,16 +39,15 @@ public class EmailException
     private static final long serialVersionUID = 5550674499282474616L;
 
     /**
-     * Constructs a new <code>EmailException</code> with no
+     * Constructs a new {@code EmailException} with no
      * detail message.
      */
     public EmailException()
     {
-        super();
     }
 
     /**
-     * Constructs a new <code>EmailException</code> with specified
+     * Constructs a new {@code EmailException} with specified
      * detail message.
      *
      * @param msg  the error message.
@@ -57,8 +58,8 @@ public class EmailException
     }
 
     /**
-     * Constructs a new <code>EmailException</code> with specified
-     * nested <code>Throwable</code> root cause.
+     * Constructs a new {@code EmailException} with specified
+     * nested {@code Throwable} root cause.
      *
      * @param rootCause  the exception or error that caused this exception
      *                   to be thrown.
@@ -69,8 +70,8 @@ public class EmailException
     }
 
     /**
-     * Constructs a new <code>EmailException</code> with specified
-     * detail message and nested <code>Throwable</code> root cause.
+     * Constructs a new {@code EmailException} with specified
+     * detail message and nested {@code Throwable} root cause.
      *
      * @param msg  the error message.
      * @param rootCause  the exception or error that caused this exception
@@ -93,14 +94,14 @@ public class EmailException
     /**
      * Prints the stack trace of this exception to the specified stream.
      *
-     * @param out  the <code>PrintStream</code> to use for output
+     * @param out  the {@code PrintStream} to use for output
      */
     @Override
     public void printStackTrace(final PrintStream out)
     {
         synchronized (out)
         {
-            final PrintWriter pw = new PrintWriter(out, false);
+            final PrintWriter pw = new PrintWriter(new OutputStreamWriter(out, Charset.defaultCharset()), false);
             printStackTrace(pw);
 
             // Flush the PrintWriter before it's GC'ed.
@@ -111,7 +112,7 @@ public class EmailException
     /**
      * Prints the stack trace of this exception to the specified writer.
      *
-     * @param out  the <code>PrintWriter</code> to use for output
+     * @param out  the {@code PrintWriter} to use for output
      */
     @Override
     public void printStackTrace(final PrintWriter out)

@@ -235,7 +235,7 @@ public class EmailLiveTest extends AbstractEmailTest
         htmlEmail4.setHtmlMsg(htmlMsg);
         htmlEmail4.attach(attachment);
 
-        EmailUtils.writeMimeMessage( new File("./target/test-emails/htmlemail4.eml"), send(htmlEmail4).getMimeMessage());        
+        EmailUtils.writeMimeMessage( new File("./target/test-emails/htmlemail4.eml"), send(htmlEmail4).getMimeMessage());
     }
 
     /**
@@ -318,7 +318,7 @@ public class EmailLiveTest extends AbstractEmailTest
 
     /**
      * Testing if we are able to send a few emails in a batch, i.e.
-     * using a single authenticated <code>Transport</code> instance.
+     * using a single authenticated {@code Transport} instance.
      * Use a single instance speeds up processing since the
      * authorization is only done once.
      *
@@ -329,7 +329,7 @@ public class EmailLiveTest extends AbstractEmailTest
     @Test
     public void testSendingEmailsInBatch() throws Exception
     {
-        final List<SimpleEmail> emails = new ArrayList<SimpleEmail>();
+        final List<SimpleEmail> emails = new ArrayList<>();
 
         // we need to instantiate an email to provide the mail session - a bit ugly
         final Session session = create(SimpleEmail.class).getMailSession();
