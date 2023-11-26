@@ -43,8 +43,10 @@
 Apache Commons Email
 ===================
 
-[![Build Status](https://travis-ci.org/apache/commons-email.svg?branch=trunk)](https://travis-ci.org/apache/commons-email)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.apache.commons/commons-email/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.apache.commons/commons-email/)
+[![GitHub Actions Status](https://github.com/apache/commons-email/workflows/Java%20CI/badge.svg)](https://github.com/apache/commons-email/actions)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/org.apache.commons/commons-email/badge.svg?gav=true)](https://maven-badges.herokuapp.com/maven-central/org.apache.commons/commons-email/?gav=true)
+[![CodeQL](https://github.com/apache/commons-email/workflows/CodeQL/badge.svg)](https://github.com/apache/commons-email/actions/workflows/codeql-analysis.yml?query=workflow%3ACodeQL)
+
 
 Apache Commons Email aims to provide an API for sending email. It is built on top of
         the JavaMail API, which it aims to simplify.
@@ -60,7 +62,7 @@ Where can I get the latest release?
 -----------------------------------
 You can download source and binaries from our [download page](https://commons.apache.org/proper/commons-email/download_email.cgi).
 
-Alternatively you can pull it from the central Maven repositories:
+Alternatively, you can pull it from the central Maven repositories:
 
 ```xml
 <dependency>
@@ -78,7 +80,7 @@ There are some guidelines which will make applying PRs easier for us:
 + No tabs! Please use spaces for indentation.
 + Respect the code style.
 + Create minimal diffs - disable on save actions like reformat source code or organize imports. If you feel the source code should be reformatted create a separate PR for this change.
-+ Provide JUnit tests for your changes and make sure your changes don't break any existing tests by running ```mvn clean test```.
++ Provide JUnit tests for your changes and make sure your changes don't break any existing tests by running ```mvn```.
 
 If you plan to contribute on a regular basis, please consider filing a [contributor license agreement](https://www.apache.org/licenses/#clas).
 You can learn more about contributing via GitHub in our [contribution guidelines](CONTRIBUTING.md).
